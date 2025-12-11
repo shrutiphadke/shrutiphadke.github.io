@@ -11,25 +11,210 @@ author_profile: true
 
 {% include base_path %}
 
-<!-- New style rendering if publication categories are defined -->
-{% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-      {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single.html %}
-    {% endfor %}
-  {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single.html %}
-  {% endfor %}
-{% endif %}
+<style>
+/* ----- Elegant Publication Styling ----- */
+
+.pub-year-header {
+  margin-top: 2.2rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid #e0e0e0;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.pub-card {
+  margin: 1.2rem 0;
+  padding: 1.0rem 1.2rem;
+  border-radius: 8px;
+  background: #fafafa;
+  border: 1px solid #e5e5e5;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.pub-card:hover {
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+
+.pub-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.pub-authors {
+  margin-top: 0.2rem;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.pub-venue {
+  margin-top: 0.2rem;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #666;
+}
+
+.pub-buttons {
+  margin-top: 0.6rem;
+}
+
+.pub-btn {
+  display: inline-block;
+  padding: 4px 10px;
+  margin-right: 6px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  text-decoration: none !important;
+  background: #ececec;
+  color: #333 !important;
+  transition: background 0.2s ease;
+}
+
+.pub-btn:hover {
+  background: #dcdcdc;
+}
+</style>
+
+<div class="post">
+<header class="post-header">
+  <h1 class="post-title">Publications</h1>
+</header>
+
+<article class="post-content">
+
+<!-- ==================== -->
+<!--       2025           -->
+<!-- ==================== -->
+<h2 class="pub-year-header">2025</h2>
+
+<div class="pub-card">
+  <div class="pub-title">Exit Stories: Using Reddit Self-Disclosures to Understand Disengagement from Problematic Communities</div>
+  <div class="pub-authors"><strong>S. Phadke</strong></div>
+  <div class="pub-venue">Proceedings of the ACM on Human-Computer Interaction, 9(7), 1–27</div>
+</div>
+
+<div class="pub-card">
+  <div class="pub-title">Towards Designing Social Interventions for Online Climate Change Denialism Discussions</div>
+  <div class="pub-authors">R. Zhong, <strong>S. Phadke</strong>, B. Goldberg, T. Mitra</div>
+  <div class="pub-venue">Proceedings of the ACM on Human-Computer Interaction, 9(7), 1–24</div>
+</div>
+
+<div class="pub-card">
+  <div class="pub-title">Asking For It: Question-Answering for Predicting Rule Infractions in Online Content Moderation</div>
+  <div class="pub-authors">M. Samory, D. Pamfile, A. To, <strong>S. Phadke</strong></div>
+  <div class="pub-venue">arXiv preprint arXiv:2510.06350</div>
+</div>
+
+<!-- ==================== -->
+<!--       2024           -->
+<!-- ==================== -->
+<h2 class="pub-year-header">2024</h2>
+
+<div class="pub-card">
+  <div class="pub-title">Characterizing Political Campaigning with Lexical Mutants on Indian Social Media</div>
+  <div class="pub-authors"><strong>S. Phadke</strong>, T. Mitra</div>
+  <div class="pub-venue">Proceedings of the International AAAI Conference on Web and Social Media, 18, 1237–1248</div>
+</div>
+
+<div class="pub-card">
+  <div class="pub-title">Information Sharing and Content Framing across Multiple Platforms and Functional Roles That Exemplify Social Processes of Online Hate Groups</div>
+  <div class="pub-authors"><strong>S. Phadke</strong>, T. Mitra</div>
+  <div class="pub-venue">In Social Processes of Online Hate, Routledge</div>
+</div>
+
+<!-- ==================== -->
+<!--       2023           -->
+<!-- ==================== -->
+<h2 class="pub-year-header">2023</h2>
+
+<div class="pub-card">
+  <div class="pub-title">Learning from the ex-believers: Individuals' journeys in and out of conspiracy theories online</div>
+  <div class="pub-authors">K. Engel, <strong>S. Phadke</strong>, T. Mitra</div>
+  <div class="pub-venue">Proceedings of the ACM on Human-Computer Interaction, 7(CSCW2), 1–37</div>
+</div>
+
+<div class="pub-card">
+  <div class="pub-title">Towards Analyzing Online Communities of Problematic Information: A Computational Approach</div>
+  <div class="pub-authors"><strong>S. Phadke</strong></div>
+  <div class="pub-venue">PhD Thesis, University of Washington</div>
+</div>
+
+<!-- ==================== -->
+<!--       2022           -->
+<!-- ==================== -->
+<h2 class="pub-year-header">2022</h2>
+
+<div class="pub-card">
+  <div class="pub-title">Pathways through conspiracy: The evolution of conspiracy radicalization through engagement in online conspiracy discussions</div>
+  <div class="pub-authors"><strong>S. Phadke</strong>, M. Samory, T. Mitra</div>
+  <div class="pub-venue">Proceedings of the International AAAI Conference on Web and Social Media, 16, 770–781</div>
+</div>
+
+<!-- ==================== -->
+<!--       2021           -->
+<!-- ==================== -->
+<h2 class="pub-year-header">2021</h2>
+
+<div class="pub-card">
+  <div class="pub-title">What makes people join conspiracy communities? Role of social factors in conspiracy engagement</div>
+  <div class="pub-authors"><strong>S. Phadke</strong>, M. Samory, T. Mitra</div>
+  <div class="pub-venue">Proceedings of the ACM on Human-Computer Interaction, 4(CSCW3), 1–30</div>
+</div>
+
+<div class="pub-card">
+  <div class="pub-title">Educators, Solicitors, Flamers, Motivators, Sympathizers: Characterizing Roles in Online Extremist Movements</div>
+  <div class="pub-authors"><strong>S. Phadke</strong>, T. Mitra</div>
+  <div class="pub-venue">ACM Journals, 5(CSCW2)</div>
+</div>
+
+<div class="pub-card">
+  <div class="pub-title">Characterizing social imaginaries and self-disclosures of dissonance in online conspiracy discussion communities</div>
+  <div class="pub-authors"><strong>S. Phadke</strong>, M. Samory, T. Mitra</div>
+  <div class="pub-venue">Proceedings of the ACM on Human-Computer Interaction, 5(CSCW2), 1–35</div>
+</div>
+
+<div class="pub-card">
+  <div class="pub-title">Addressing challenges and opportunities in online extremism research: An interdisciplinary perspective</div>
+  <div class="pub-authors"><strong>S. Phadke</strong>, J. Seiler, T. Mitra, K. Garimella, M. Costello, J. Hawdon</div>
+  <div class="pub-venue">Companion Publication of CSCW 2021, 356–359</div>
+</div>
+
+<!-- ==================== -->
+<!--       2020           -->
+<!-- ==================== -->
+<h2 class="pub-year-header">2020</h2>
+
+<div class="pub-card">
+  <div class="pub-title">Many faced hate: A cross platform study of content framing and information sharing by online hate groups</div>
+  <div class="pub-authors"><strong>S. Phadke</strong>, T. Mitra</div>
+  <div class="pub-venue">Proceedings of CHI 2020, 1–13</div>
+</div>
+
+<!-- ==================== -->
+<!--       2019           -->
+<!-- ==================== -->
+<h2 class="pub-year-header">2019</h2>
+
+<div class="pub-card">
+  <div class="pub-title">Cross-platform data collection and analysis for online hate groups</div>
+  <div class="pub-authors">R. Chandaluri, <strong>S. Phadke</strong></div>
+  <div class="pub-venue">Virginia Tech</div>
+</div>
+
+<!-- ==================== -->
+<!--       2018           -->
+<!-- ==================== -->
+<h2 class="pub-year-header">2018</h2>
+
+<div class="pub-card">
+  <div class="pub-title">Framing hate with hate frames: Designing the codebook</div>
+  <div class="pub-authors"><strong>S. Phadke</strong>, J. Lloyd, J. Hawdon, M. Samory, T. Mitra</div>
+  <div class="pub-venue">Companion CSCW 2018, 201–204</div>
+</div>
+
+</article>
+</div>
 
 
