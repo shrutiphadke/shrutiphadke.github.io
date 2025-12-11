@@ -5,8 +5,111 @@ permalink: /teaching/
 author_profile: true
 ---
 
-{% include base_path %}
+<style>
+/* ----- Teaching Page Styling ----- */
 
-{% for post in site.teaching reversed %}
-  {% include archive-single.html %}
-{% endfor %}
+.teaching-description {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #444;
+  line-height: 1.55;
+}
+
+.course-card {
+  background: #fafafa;
+  border: 1px solid #e5e5e5;
+  padding: 1rem 1.2rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.course-card:hover {
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+
+.course-name {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.course-department {
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 0.15rem;
+  font-style: italic;
+}
+
+.course-description {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.4;
+}
+</style>
+
+<div class="post">
+<header class="post-header">
+  <h1 class="post-title">Courses at Drexel</h1>
+</header>
+
+<article class="post-content">
+
+
+<!-- ========================== -->
+<!--         COURSE CARDS       -->
+<!-- ========================== -->
+
+<!-- ---- Course Card Template ---- -->
+<div class="course-card">
+  <div class="course-name">DSCI 511: Data Acquisition and Pre-Processing (Masters)</div>
+  <div class="course-department">Data Science</div>
+  <div class="course-description">
+Introduces the breadth of data science through a project lifecycle perspective. Covers early-stage data-life cycle activities in depth for the development and dissemination of data sets. Provides technical experience with data harvesting, acquisition, pre-processing, and curation. Concludes with an open-ended term project where students explore data availability, scale, variability, and reliability.
+
+
+  </div>
+</div>
+
+  
+<div class="course-card">
+  <div class="course-name">INFO 405: Social and Collaborative Computing (UG)</div>
+  <div class="course-department">Information Science</div>
+  <div class="course-description">
+    This course provides an introduction to the ways that computing systems support social interaction and productive collaboration. 
+    Students will learn concepts from social science theory and research and use these concepts to analyze systems and imagine novel system designs that meet the needs of groups and organizations. 
+    Students will spend time examining, using, and participating in social and collaborative computing environments such as collaboration tools, crowdwork platforms, social media, and various online communities.
+
+  </div>
+</div>
+
+<!-- Duplicate the block above for each course you want to add -->
+
+
+<!-- Example additional card (delete or overwrite) -->
+<div class="course-card">
+  <div class="course-name">INFO 616: Social and Collaborative Computing (Masters)</div>
+  <div class="course-department">Information Science</div>
+  <div class="course-description">
+    Surveys theory and research literature on socio-technical issues and concepts in computer-supported cooperative work and social computing. Covers topics such as group work in collocated, distributed, and domain-specific contexts; design, implementation and evaluation of collaborative software; social media and online communities; computer-supported collaborative learning and community-learning technologies; and future directions of collaborative and social computing.
+
+
+  </div>
+</div>
+
+<!-- Example additional card (delete or overwrite) -->
+<div class="course-card">
+  <div class="course-name">INFO 615: Designing with Data (Masters)</div>
+  <div class="course-department">Information Science</div>
+  <div class="course-description">
+Although user experience design has always involved collecting data about users’ needs and preferences, new forms and quantities of user data have created a need for new data analysis skills and professional ethics training among designers. This class introduces students to A/B testing and statistical methods to prepare them to design and run large scale user experiments that can inform design decisions. Students practice using tools and methods as well as composing experiment reports and design recommendations.
+
+
+
+  </div>
+</div>
+
+</article>
+</div>
