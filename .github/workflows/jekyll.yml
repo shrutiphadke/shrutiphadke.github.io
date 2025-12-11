@@ -30,6 +30,7 @@ jobs:
         with:
           source: .
           destination: ./_site
+          future: true  # allows future-dated publications if needed
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -42,6 +43,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
