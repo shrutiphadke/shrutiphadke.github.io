@@ -1,14 +1,157 @@
 ---
 layout: archive
-title: "Portfolio"
+title: "Computational Social Science Research Lab"
 permalink: /portfolio/
 author_profile: true
 ---
 
-{% include base_path %}
+<style>
+/* --------- Lab Page Styling --------- */
+
+.lab-description {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #444;
+  line-height: 1.55;
+}
+
+/* Section headers */
+.lab-section-header {
+  margin-top: 2.2rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid #e0e0e0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Student cards */
+.student-card {
+  display: flex;
+  align-items: flex-start;
+  background: #fafafa;
+  border: 1px solid #e5e5e5;
+  padding: 1rem 1.2rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.student-card:hover {
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+
+.student-photo {
+  width: 80px;
+  height: 80px;
+  background: #ddd;
+  border-radius: 6px;
+  margin-right: 1rem;
+  object-fit: cover;
+}
+
+.student-info {
+  flex: 1;
+}
+
+.student-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.student-role {
+  font-size: 0.95rem;
+  color: #555;
+  margin-top: 0.15rem;
+}
+
+.student-interests {
+  font-size: 0.9rem;
+  margin-top: 0.35rem;
+  color: #666;
+}
+
+.student-links a {
+  font-size: 0.85rem;
+  margin-right: 10px;
+  text-decoration: none;
+  color: #0066cc;
+}
+</style>
+
+<div class="post">
+<header class="post-header">
+  <h1 class="post-title">Research Lab</h1>
+</header>
+
+<article class="post-content">
+
+<!-- -------- Intro Description -------- -->
+<p class="lab-description">
+Our research lab investigates sociotechnical dynamics in online communities. We combine computational methods with HCI/CSCW theory to understand how 
+platforms shape behaviors, identities, and community trajectories.
+</p>
+
+<!-- ========================== -->
+<!--       PhD STUDENTS        -->
+<!-- ========================== -->
+<h2 class="lab-section-header">PhD Students</h2>
+
+<!-- ---- STUDENT CARD TEMPLATE (PhD) ---- -->
+<div class="student-card">
+  <img class="student-photo" src="https://muqiguo.notion.site/image/attachment%3A785d47bd-a08c-4843-951b-9cbce235ab5f%3AIMG_1809.jpg" alt="Photo">
+  <div class="student-info">
+    <div class="student-name">Muqi Guo</div>
+    <div class="student-role">PhD Student, Information Science</div>
+    <div class="student-interests">I received my M.Sc. in Computer Science from Drexel University in 2025 and B.A. in Computer Science from Grinnell College in 2023. My research focuses on computational social science, specifically understanding online community dynamics. Outside of research, you can find me playing ultimate frisbee or watching the Eagles.</div>
+    <div class="student-links">
+      <a href="#">https://muqiguo.notion.site/</a>
+      <a href="#">https://www.linkedin.com/in/muqiguo/</a>
+    </div>
+  </div>
+</div>
+
+<!-- Add more PhD students by duplicating the block above -->
 
 
-{% for post in site.portfolio %}
-  {% include archive-single.html %}
-{% endfor %}
+<!-- ========================== -->
+<!--    MASTERS STUDENTS       -->
+<!-- ========================== -->
+<h2 class="lab-section-header">Masters Students</h2>
 
+<div class="student-card">
+  <img class="student-photo" src="/images/students/masters1.jpg" alt="Photo">
+  <div class="student-info">
+    <div class="student-name">Parker Hartman</div>
+    <div class="student-role">Masters in Information Science</div>
+    <div class="student-interests">Research interests: accesible HCI, online communities.</div>
+    <div class="student-links">
+      <a href="#">Website</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ========================== -->
+<!-- UNDERGRADUATE STUDENTS    -->
+<!-- ========================== -->
+<h2 class="lab-section-header">Undergraduate Researchers</h2>
+
+<div class="student-card">
+  <img class="student-photo" src="/images/students/undergrad1.jpg" alt="Photo">
+  <div class="student-info">
+    <div class="student-name">To Duong</div>
+    <div class="student-role">Undergraduate Research Assistant</div>
+    <div class="student-interests"></div>
+    <div class="student-links">
+      <a href="#">Website</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+</article>
+</div>
