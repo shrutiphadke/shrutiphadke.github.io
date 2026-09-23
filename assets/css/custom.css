@@ -1,152 +1,364 @@
 /* =====================================================================
    Custom styling for shrutiphadke.github.io  (AcademicPages / Minimal Mistakes)
    ---------------------------------------------------------------------
-   A clean, professional restyle: white background, near-black ink,
-   one quiet slate-blue accent, and a Source Serif 4 + Inter type pairing.
+   "Swiss Index": black and white, one typeface (Geist) at a few weights,
+   strong horizontal rules, a grayscale portrait and a single red accent.
    This file only ADDS overrides on top of the theme, so it is safe to
-   keep across template updates.  To change the accent color, edit
-   --accent / --accent-strong below.
+   keep across template updates. To change the accent, edit --accent.
+   Page-specific components (publications, teaching, lab) live at the
+   bottom of this file.
    ===================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap');
 
 :root{
-  --ink:#22262b;          /* headings, name        */
-  --body:#4c555e;         /* body text             */
-  --muted:#727c86;        /* secondary text        */
-  --bg:#ffffff;           /* page background       */
-  --surface:#f6f7f9;      /* footer / subtle panels*/
-  --line:#e7e9ec;         /* hairline rules        */
-  --accent:#2c5d7c;       /* links + marks         */
-  --accent-strong:#1f4459;/* link hover            */
-  --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
-  --sans:"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --ink:#111111;          /* text, rules        */
+  --body:#1f1f1f;         /* running text       */
+  --muted:#6f6f6f;        /* secondary text     */
+  --faint:#d9d9d9;        /* hairlines          */
+  --bg:#ffffff;
+  --accent:#e0301e;       /* the one red        */
+  --sans:"Geist", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /* feed the theme's own variables so every stock component follows */
+  --global-bg-color:var(--bg);
+  --global-footer-bg-color:var(--bg);
+  --global-text-color:var(--body);
+  --global-text-color-light:var(--muted);
+  --global-border-color:var(--faint);
+  --global-dark-border-color:var(--ink);
+  --global-link-color:var(--ink);
+  --global-link-color-hover:var(--accent);
+  --global-link-color-visited:var(--ink);
+  --global-masthead-link-color:var(--ink);
+  --global-masthead-link-color-hover:var(--accent);
 }
 
-/* ---- Base typography ------------------------------------------------ */
-/* The stock theme scales body text up to 20–22px on wide screens, which
-   reads oversized. Cap it at a calmer, steadier size.                    */
-html{ font-size:17px !important; }
-@media (min-width:1024px){ html{ font-size:18px !important; } }
+html[data-theme="dark"]{
+  --ink:#f2f2f2;
+  --body:#e2e2e2;
+  --muted:#9a9a9a;
+  --faint:#333333;
+  --bg:#0e0e0e;
+  --accent:#ff5a47;
+  /* the theme's dark block also sets these, so restate them here */
+  --global-bg-color:var(--bg);
+  --global-footer-bg-color:var(--bg);
+  --global-text-color:var(--body);
+  --global-text-color-light:var(--muted);
+  --global-border-color:var(--faint);
+  --global-dark-border-color:var(--ink);
+  --global-link-color:var(--ink);
+  --global-link-color-hover:var(--accent);
+  --global-link-color-visited:var(--ink);
+  --global-masthead-link-color:var(--ink);
+  --global-masthead-link-color-hover:var(--accent);
+}
+
+/* ---- Base ----------------------------------------------------------- */
+html{ font-size:16px !important; }
+@media (min-width:1024px){ html{ font-size:17px !important; } }
 
 body{
   font-family:var(--sans) !important;
   color:var(--body);
   background:var(--bg);
-  line-height:1.65;
+  line-height:1.6;
   -webkit-font-smoothing:antialiased;
+  font-feature-settings:"ss01";
 }
 
 h1, h2, h3, h4, h5, h6,
 .page__title, .archive__item-title, .author__name, .site-title{
-  font-family:var(--serif) !important;
+  font-family:var(--sans) !important;
   color:var(--ink);
   font-weight:600;
-  line-height:1.2;
-  letter-spacing:-.01em;
+  line-height:1.15;
+  letter-spacing:-.02em;
 }
 
-a{ color:var(--accent); }
-a:hover{ color:var(--accent-strong); }
-::selection{ background:rgba(44,93,124,.16); }
-hr{ border-color:var(--line); }
+a{ color:var(--ink); }
+a:hover{ color:var(--accent); }
+a:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+::selection{ background:var(--accent); color:#fff; }
+hr{ border:0; border-top:1px solid var(--ink); }
 
-/* ---- Top navigation (masthead) ------------------------------------- */
-.masthead{
-  background:var(--bg);
-  border-bottom:1px solid var(--line);
-  box-shadow:none;
-}
+/* ---- Top navigation ------------------------------------------------- */
+.masthead{ background:var(--bg); box-shadow:none; }
+.masthead::after{ height:2px; background:var(--ink); }
+.masthead__menu-item{ background:transparent; }
 .greedy-nav{ background:transparent; }
-.greedy-nav .site-title{
-  font-family:var(--serif) !important;
-  font-weight:600;
-  color:var(--ink);
-}
 .greedy-nav a{
   font-family:var(--sans) !important;
-  color:var(--body);
-  font-weight:500;
+  color:var(--ink);
+  font-weight:400;
+  font-size:.92rem;
 }
-.greedy-nav a:hover{ color:var(--ink); }
-.greedy-nav .site-title:hover{ color:var(--ink); }
-/* recolor the animated hover underline */
-.greedy-nav .visible-links a:before,
-.greedy-nav a:before{ background:var(--accent) !important; height:2px; }
-.greedy-nav .hidden-links a:hover{ color:var(--accent); }
+.greedy-nav .visible-links li:first-child a{
+  font-weight:700;
+  font-size:1.15rem;
+  letter-spacing:-.03em;
+}
+.greedy-nav a:hover{ color:var(--accent); }
+/* drop the animated underline; the current page gets a red arrow instead */
+.greedy-nav .visible-links a:before{ display:none; }
+.greedy-nav .is-current > a::after{ content:none; }
+.greedy-nav .is-current > a{ color:var(--ink); font-weight:600; }
+.greedy-nav .is-current > a::before{
+  content:"\2192\00a0" !important;
+  display:inline !important;
+  position:static !important;
+  transform:none !important;
+  background:none !important;
+  height:auto !important;
+  width:auto !important;
+  color:var(--accent);
+}
+.greedy-nav button{ background:var(--bg); }
+.greedy-nav .navicon,
+.greedy-nav .navicon:before,
+.greedy-nav .navicon:after{ background:var(--ink); }
+.greedy-nav .hidden-links{
+  border:2px solid var(--ink);
+  border-radius:0;
+  box-shadow:none;
+  background:var(--bg);
+}
+.greedy-nav .hidden-links:before,
+.greedy-nav .hidden-links:after{ display:none; }
+.greedy-nav .hidden-links a:hover{ background:transparent; color:var(--accent); }
+#theme-toggle a{ color:var(--muted); }
 
 /* ---- Author sidebar ------------------------------------------------- */
 .author__avatar img{
-  max-width:180px;
-  border-radius:12px;          /* soft square instead of a tight circle */
-  border:1px solid var(--line);
-  box-shadow:0 1px 4px rgba(20,30,40,.07);
+  max-width:170px;
+  border-radius:0;
+  border:0;
+  box-shadow:none;
+  aspect-ratio:4 / 5;
+  object-fit:cover;
+  filter:grayscale(1) contrast(1.05);
 }
-.author__name{ font-family:var(--serif) !important; color:var(--ink); }
-.author__bio{ font-family:var(--sans) !important; color:var(--muted); }
+.author__name{ font-weight:700; letter-spacing:-.03em; }
+.author__bio{
+  font-family:var(--sans) !important;
+  color:var(--body);
+  font-size:.85rem;
+  line-height:1.45;
+}
 .author__urls-wrapper{ font-family:var(--sans); }
-.author__urls li{ font-size:.9rem; }
-.author__urls a{ color:var(--body); }
+.author__urls{ border:0 !important; box-shadow:none !important; background:var(--bg) !important; border-radius:0 !important; }
+.author__urls:before, .author__urls:after{ display:none !important; }
+.author__urls li{ font-size:.82rem; color:var(--muted); }
+.author__urls a{ color:var(--ink); }
 .author__urls a:hover{ color:var(--accent); text-decoration:none; }
-.author__urls .fa,
-.author__urls .fas,
-.author__urls .fab{ color:var(--muted); }
+.author__urls .fa, .author__urls .fas, .author__urls .fab,
+.author__urls .ai{ color:var(--ink); }
+.author__urls a:hover .fa, .author__urls a:hover .fas,
+.author__urls a:hover .fab, .author__urls a:hover .ai{ color:var(--accent); }
 
-/* The "Follow" button */
+/* Buttons, including the sidebar's "Follow" toggle on small screens */
 .author__urls-wrapper > button,
-.btn, .btn--info, .btn--primary{
-  background:var(--accent) !important;
-  border:1px solid var(--accent) !important;
-  color:#fff !important;
-  border-radius:8px;
+.btn, .btn--info, .btn--primary, .btn--inverse{
+  background:var(--bg) !important;
+  border:2px solid var(--ink) !important;
+  color:var(--ink) !important;
+  border-radius:0;
   font-family:var(--sans) !important;
   font-weight:500;
   letter-spacing:0;
   box-shadow:none;
 }
 .author__urls-wrapper > button:hover,
-.btn:hover, .btn--info:hover, .btn--primary:hover{
-  background:var(--accent-strong) !important;
-  border-color:var(--accent-strong) !important;
-  color:#fff !important;
+.btn:hover, .btn--info:hover, .btn--primary:hover, .btn--inverse:hover{
+  background:var(--ink) !important;
+  color:var(--bg) !important;
 }
 
 /* ---- Main content --------------------------------------------------- */
 .page__content{ color:var(--body); }
 .page__content p,
 .page__content li{ font-size:1rem; }
-/* comfortable reading measure */
 .page__content > p,
 .page__content > ul,
-.page__content > ol,
-.page__content > h1,
-.page__content > h2,
-.page__content > h3{ max-width:46rem; }
+.page__content > ol{ max-width:40rem; }
 .page__content a{
   text-decoration:underline;
-  text-underline-offset:2px;
+  text-underline-offset:3px;
   text-decoration-thickness:1px;
-  text-decoration-color:rgba(44,93,124,.35);
 }
-.page__content a:hover{ text-decoration-color:var(--accent-strong); }
-.page__title{ color:var(--ink); }
+.page__content a:hover{ color:var(--accent); }
+.page__title{ font-size:2rem; font-weight:700; letter-spacing:-.035em; }
+.page__content h2{
+  border-bottom:0;
+  border-top:2px solid var(--ink);
+  padding-top:.5rem;
+  font-size:1rem;
+  font-weight:600;
+  letter-spacing:0;
+  max-width:44rem;
+}
 
-/* ---- Publication / talk / portfolio lists --------------------------- */
-.archive__item-title{ font-family:var(--serif) !important; }
+/* Homepage: the opening paragraph is set large, as a statement */
+.page__content > p.lede,
+.page__content > p:first-child{
+  font-size:1.22rem;
+  line-height:1.42;
+  letter-spacing:-.015em;
+  color:var(--ink);
+  max-width:34em;
+  margin-bottom:1.6rem;
+}
+
+/* ---- Stock archive lists (talks, posts) ------------------------------ */
+.archive__item-title{ font-weight:500; }
 .archive__item-title a{ color:var(--ink); text-decoration:none; }
 .archive__item-title a:hover{ color:var(--accent); }
 .archive__item-excerpt{ color:var(--muted); }
-.archive__subtitle{ color:var(--ink); border-bottom:1px solid var(--line); }
+.archive__subtitle{ color:var(--ink); border-bottom:2px solid var(--ink); }
 
 /* ---- Footer --------------------------------------------------------- */
 .page__footer{
-  background:var(--surface);
+  background:var(--bg);
   color:var(--muted);
-  border-top:1px solid var(--line);
-  margin-top:3rem;
+  border-top:2px solid var(--ink);
+  margin-top:4rem;
 }
-.page__footer a{ color:var(--muted); }
+.page__footer footer{ font-size:.8rem; }
+.page__footer a{ color:var(--ink); }
 .page__footer a:hover{ color:var(--accent); }
-.page__footer-copyright{ font-size:.8rem; }
+.page__footer-copyright{ font-size:.75rem; color:var(--muted); }
 .page__footer-follow .social-icons .fa,
-.page__footer-follow a{ color:var(--muted); }
+.page__footer-follow a{ color:var(--ink); }
+
+/* =====================================================================
+   Page components
+   ===================================================================== */
+
+/* Shared: a section label that sits on a heavy rule */
+.section-rule,
+.pub-year-header,
+.lab-section-header{
+  margin:2.4rem 0 0 !important;
+  padding-top:.45rem;
+  border-top:2px solid var(--ink);
+  border-bottom:0 !important;
+  font-size:.85rem !important;
+  font-weight:600;
+  letter-spacing:0;
+  color:var(--ink);
+}
+
+/* Page headings inside the hand-written pages */
+.post-title{ font-size:2rem; font-weight:700; letter-spacing:-.035em; margin-bottom:.4rem; }
+
+/* ---- Publications --------------------------------------------------- */
+.pub-card{
+  display:grid;
+  gap:.15rem;
+  padding:.85rem 0;
+  border-top:1px solid var(--faint);
+}
+.pub-year-header + .pub-card{ border-top:0; }
+.pub-title{ font-size:1rem; font-weight:500; line-height:1.35; color:var(--ink); max-width:44rem; }
+.pub-authors{ font-size:.85rem; color:var(--body); }
+.pub-authors strong{ font-weight:600; color:var(--ink); }
+.pub-venue{ font-size:.85rem; color:var(--muted); }
+.pub-links{ margin-top:.25rem; display:flex; gap:1rem; }
+.pub-links a{
+  font-size:.8rem;
+  font-weight:500;
+  color:var(--accent);
+  text-decoration:none;
+}
+.pub-links a::after{ content:" \2197"; }
+.pub-links a:hover{ text-decoration:underline; }
+
+/* Homepage "Recent publications" list: year in a narrow left column */
+.pub-list{ list-style:none; margin:.4rem 0 1rem !important; padding:0; max-width:44rem; }
+.pub-list li{
+  display:grid;
+  grid-template-columns:3.2rem 1fr;
+  gap:.75rem;
+  padding:.7rem 0;
+  border-top:1px solid var(--faint);
+  margin:0;
+}
+.pub-list li:first-child{ border-top:0; }
+.pub-list .yr{ font-size:.85rem; font-variant-numeric:tabular-nums; color:var(--ink); padding-top:.1rem; }
+.pub-list .t{ display:block; font-weight:500; line-height:1.35; color:var(--ink); }
+.pub-list .v{ display:block; font-size:.82rem; color:var(--muted); }
+.pub-list .v b{ color:var(--accent); font-weight:500; }
+.more-link{ font-size:.9rem; font-weight:500; }
+.page__content .more-link a{ text-decoration:none; }
+.page__content .more-link a::before{ content:"\2192\00a0"; color:var(--accent); }
+
+/* ---- Teaching ------------------------------------------------------- */
+.course-card{
+  padding:1rem 0;
+  border-top:1px solid var(--faint);
+}
+.course-card:first-of-type{ border-top:2px solid var(--ink); }
+.course-name{ font-size:1.05rem; font-weight:600; color:var(--ink); letter-spacing:-.01em; }
+.course-department{ font-size:.82rem; color:var(--accent); margin-top:.1rem; }
+.course-description{ margin-top:.5rem; font-size:.92rem; color:var(--body); line-height:1.55; max-width:42rem; }
+
+/* ---- Research lab --------------------------------------------------- */
+.lab-description{
+  font-size:1.3rem;
+  line-height:1.4;
+  letter-spacing:-.015em;
+  color:var(--ink);
+  max-width:34em;
+  margin-bottom:1rem;
+}
+.student-card{
+  display:flex;
+  align-items:flex-start;
+  gap:1.1rem;
+  padding:1rem 0;
+  border-top:1px solid var(--faint);
+}
+.lab-section-header + .student-card{ border-top:0; }
+.student-photo{
+  width:84px;
+  height:105px;
+  flex:none;
+  object-fit:cover;
+  background:var(--faint);
+  filter:grayscale(1);
+}
+.student-info{ flex:1; min-width:0; }
+.student-name{ font-size:1.05rem; font-weight:600; color:var(--ink); letter-spacing:-.01em; }
+.student-role{ font-size:.85rem; color:var(--accent); margin-top:.1rem; }
+.student-interests{ font-size:.9rem; margin-top:.4rem; color:var(--body); line-height:1.55; max-width:40rem; }
+.student-links{ display:flex; flex-wrap:wrap; gap:.25rem 1rem; margin-top:.4rem; }
+.student-links a{ font-size:.82rem; color:var(--ink); overflow-wrap:anywhere; }
+.student-links a:hover{ color:var(--accent); }
+
+@media (max-width:600px){
+  .page__content > p.lede,
+  .page__content > p:first-child,
+  .lab-description{ font-size:1.12rem; }
+  .student-photo{ width:64px; height:80px; }
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{ transition:none !important; animation:none !important; }
+}
+
+/* Archive pages already print the page title, so the hand-written
+   heading inside publications / teaching / lab reads as a subtitle */
+.archive .post-title{
+  font-size:1rem;
+  font-weight:500;
+  letter-spacing:0;
+  color:var(--muted);
+  margin:.9rem 0 .5rem;
+}
+.archive .post-title:empty{ display:none; }
+.archive .wordwrap{ font-size:.85rem; color:var(--muted); }
+.archive .wordwrap a, .archive a{ color:var(--ink); }
+.archive .wordwrap a:hover, .archive a:hover{ color:var(--accent); }
+.pub-list .t a{ color:inherit; text-decoration:none; }
+.pub-list .t a:hover{ color:var(--accent); text-decoration:underline; }
