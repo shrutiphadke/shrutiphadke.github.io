@@ -209,9 +209,16 @@ hr{ border:0; border-top:1px solid var(--ink); }
   max-width:34em;
   margin-bottom:1.6rem;
 }
-/* Homepage (about): smaller running text */
-.page__content:has(> .pub-list) > p:not(:first-child):not(.more-link),
-.page__content:has(> .pub-list) > ul:not(.pub-list) li{ font-size:.92rem; }
+/* Homepage (about): one text size throughout, intro included */
+.page__content:has(> .pub-list) > p,
+.page__content:has(> .pub-list) .pub-list li{
+  font-size:.92rem;
+  line-height:1.6;
+  letter-spacing:0;
+  color:var(--body);
+}
+.page__content:has(> .pub-list) > p:first-child{ max-width:40rem; margin-bottom:1em; }
+.page__content:has(> .pub-list) .pub-list .t{ font-size:.92rem; line-height:1.45; }
 
 /* ---- Stock archive lists (talks, posts) ------------------------------ */
 .archive__item-title{ font-weight:500; }
