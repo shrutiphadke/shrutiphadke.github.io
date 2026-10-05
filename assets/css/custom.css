@@ -202,13 +202,16 @@ hr{ border:0; border-top:1px solid var(--ink); }
 /* Homepage: the opening paragraph is set large, as a statement */
 .page__content > p.lede,
 .page__content > p:first-child{
-  font-size:1.22rem;
-  line-height:1.42;
+  font-size:1.08rem;
+  line-height:1.45;
   letter-spacing:-.015em;
   color:var(--ink);
   max-width:34em;
   margin-bottom:1.6rem;
 }
+/* Homepage (about): smaller running text */
+.page__content:has(> .pub-list) > p:not(:first-child):not(.more-link),
+.page__content:has(> .pub-list) > ul:not(.pub-list) li{ font-size:.92rem; }
 
 /* ---- Stock archive lists (talks, posts) ------------------------------ */
 .archive__item-title{ font-weight:500; }
@@ -338,7 +341,7 @@ hr{ border:0; border-top:1px solid var(--ink); }
 
 @media (max-width:600px){
   .page__content > p.lede,
-  .page__content > p:first-child,
+  .page__content > p:first-child{ font-size:1rem; }
   .lab-description{ font-size:1.12rem; }
   .student-photo{ width:64px; height:80px; }
 }
